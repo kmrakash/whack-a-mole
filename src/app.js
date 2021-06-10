@@ -4,6 +4,8 @@ import gsap from "gsap";
 import Timer from "./Timer";
 import Mole from "./Mole";
 import usePersistenceState from "./usePersistence";
+// import useAudio from "./useAudio";
+
 
 const TIME_LIMIT = 30000;
 const MOLE_SCORE = 100;
@@ -30,6 +32,7 @@ function App() {
     const [ finished, setFinished ] = useState( false );
     const [ moles, setMoles ] = useState( generateMoleArray() );
     const [ highScore, setHighScore ] = usePersistenceState( "whac-high-score", 0 );
+    // const { play: playSquek } = useAudio();
 
     const startGame = () => {
         setScore( 0 );
@@ -44,7 +47,12 @@ function App() {
         setFinished( true );
     }
 
-    const onWhack = points => setScore( score + points );
+    const onWhack = points => {
+        // playSquek()
+        setScore( score + points )
+    }
+
+
 
     return (
         <>
